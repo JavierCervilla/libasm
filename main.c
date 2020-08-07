@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 14:57:34 by jcervill          #+#    #+#             */
-/*   Updated: 2020/08/05 20:39:50 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/08/07 18:29:45 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		main()
 	**------------------------------------------------------------------------
 	*/
    
-	char *s = "prueba";
+	char 	*s = "prueba";
 	char	*null = "\0";
 	printf("OG-len:%zu\n", strlen(s));
 	printf("MY-len:%zu\n", ft_strlen(s));
@@ -80,4 +80,22 @@ int		main()
 	printf("MY-strcmp:%d\n", ft_strcmp(s1, s3));
 	printf("OG-strcmp:%d\n", strcmp(s1, s1));
 	printf("MY-strcmp:%d\n", ft_strcmp(s1, s1));
+	/*
+	**-------------------------------------------------------------------------
+	**	char	*ft_strdup(char *s);
+	**	·inputs:
+	**		·char *s : cadena de caracteres a duplicar
+	**	·return:
+    **     char *str : puntero a direccion de memoria donde
+	**			esta la copia de s
+	**------------------------------------------------------------------------
+	*/
+	printf("OG-strdup:%s\n", strdup(s1));
+	printf("MY-strdup:%s\n", ft_strdup(s1));
+	printf("OG-strdup:%s\n", strdup(s2));
+	printf("MY-strdup:%s\n", ft_strdup(s2));
+	//printf("OG-strdup:%s\n", strdup(NULL));
+	//printf("MY-strdup:%s\n", ft_strdup(NULL));
+	printf("OG-strdup:%s\n", strdup(null));
+	printf("MY-strdup:%s\n", ft_strdup(null));
 }

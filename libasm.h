@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 14:39:59 by jcervill          #+#    #+#             */
-/*   Updated: 2020/08/05 18:37:19 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/08/07 18:26:46 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@
 size_t  ft_strlen(char *s);
 char    *ft_strcpy(char *dst, const char *strc);
 int     ft_strcmp(const char *s1, const char *s2);
+char    *ft_strdup(char *s);
 #endif
