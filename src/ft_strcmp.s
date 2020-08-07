@@ -41,6 +41,5 @@ _ft_strcmp:
     _null:
             ret
     _neg:
-            neg     rax
             neg     al
             ret

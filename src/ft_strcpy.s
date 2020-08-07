@@ -25,5 +25,7 @@ _ft_strcpy:
             inc     rcx
             jmp     _while
     _null:
+            mov     al, BYTE[rsi + rcx]
+            mov     BYTE[rdi + rcx], al
             mov     rax, rdi
             ret
