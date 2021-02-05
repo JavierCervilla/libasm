@@ -8,6 +8,8 @@
 ;       ·return:
 ;           ·char *dst : una vez copiado src a dst retorna dst
 ;------------------------------------------------------------------------
+;   author: <jcervill>  <jcervill@student.42madrid.com>
+;-------------------------------------------------------------------------
 
             section .text
             global _ft_strcpy

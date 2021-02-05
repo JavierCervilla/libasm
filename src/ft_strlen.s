@@ -6,6 +6,7 @@
 ;       ·return:
 ;           ·if(!s)->ret(0);
 ;           ·ret(len(s))
+;------------------------------------------------------------------------
 ;   author: <jcervill>  <jcervill@student.42madrid.com>
 ;------------------------------------------------------------------------
 
@@ -17,7 +18,7 @@ _ft_strlen:
             je      _null
             jne     _while
     _while:
-            cmp     BYTE[rdi + rax], 0
+            cmp     BYTE[rdi + rax], 0          ; BYTE[rdi + rax] accedes a 1 byte  
             je      _null
             jne     _count
     _count:

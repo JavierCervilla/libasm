@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 14:57:34 by jcervill          #+#    #+#             */
-/*   Updated: 2020/08/07 18:29:45 by jcervill         ###   ########.fr       */
+/*   Updated: 2020/08/18 09:31:32 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,18 @@ int		main()
 	**			·ret(len(s));
 	**------------------------------------------------------------------------
 	*/
-   
+
 	char 	*s = "prueba";
+	char	*empty = "";
 	char	*null = "\0";
+	
 	printf("OG-len:%zu\n", strlen(s));
 	printf("MY-len:%zu\n", ft_strlen(s));
+	printf("OG-len:%zu\n", strlen(empty));
+	printf("MY-len:%zu\n", ft_strlen(empty));
 	printf("OG-len:%zu\n", strlen(null));
 	printf("MY-len:%zu\n", ft_strlen(null));
-   
+
 	/*
 	**-------------------------------------------------------------------------
 	**	char	*ft_strcpy(char *dst, char *sr);
@@ -39,8 +43,9 @@ int		main()
 	**		·char *src : cadena de origen, a copiar en dst
 	**	·return:
     **     ·char *dst : una vez copiado src a dst retorna dst
-	**--------------------------------------------------------------------------
+	**-------------------------------------------------------------------------
 	*/
+
 	char *src = "hola mundo";
 	char *dst;
 	if (!(dst = (char *)malloc(sizeof(char) * (ft_strlen(src) + 1))))
@@ -49,13 +54,16 @@ int		main()
 	printf("OG-strcpy(dst):%s\n", dst);
 	printf("MY-strcpy:%s\n", ft_strcpy(dst, src));
 	printf("MY-strcpy(dst):%s\n", dst);
+
 	/*
-	** ----------------------------------------
+	** ------------------------------------------------------------------------
 	*/
+
 	printf("OG-strcpy:%s\n", strcpy(dst, null));
 	printf("OG-strcpy(dst):%s\n", dst);
 	printf("MY-strcpy:%s\n", ft_strcpy(dst, null));
 	printf("MY-strcpy(dst):%s\n", dst);
+	
 	/*
 	**-------------------------------------------------------------------------
 	**	char	*ft_strcmp(const char *s1, const char *s2);
@@ -65,8 +73,9 @@ int		main()
 	**	·return:
     **     int rtn : diferencia entre primeros dos caracteres distintos
 	**         de s1 y s2.
-	**------------------------------------------------------------------------
+	**-------------------------------------------------------------------------
 	*/
+
 	char *s1 = "hola cerda";
 	char *s2 = "hola cerdA";
 	char *s3 = "hola";
@@ -80,6 +89,7 @@ int		main()
 	printf("MY-strcmp:%d\n", ft_strcmp(s1, s3));
 	printf("OG-strcmp:%d\n", strcmp(s1, s1));
 	printf("MY-strcmp:%d\n", ft_strcmp(s1, s1));
+
 	/*
 	**-------------------------------------------------------------------------
 	**	char	*ft_strdup(char *s);
@@ -88,8 +98,9 @@ int		main()
 	**	·return:
     **     char *str : puntero a direccion de memoria donde
 	**			esta la copia de s
-	**------------------------------------------------------------------------
+	**-------------------------------------------------------------------------
 	*/
+
 	printf("OG-strdup:%s\n", strdup(s1));
 	printf("MY-strdup:%s\n", ft_strdup(s1));
 	printf("OG-strdup:%s\n", strdup(s2));
@@ -98,4 +109,67 @@ int		main()
 	//printf("MY-strdup:%s\n", ft_strdup(NULL));
 	printf("OG-strdup:%s\n", strdup(null));
 	printf("MY-strdup:%s\n", ft_strdup(null));
+
+	/*
+	**-------------------------------------------------------------------------
+	**	int		ft_write(int fd, void *contenido, int len);
+	**	
+	**-------------------------------------------------------------------------
+	*/
+
+	int ret;
+	printf("OG-write:\n");
+	ret = write(1,s1,ft_strlen(s1));
+	printf("\nret: %d\n", ret);
+	perror("ERR: WRITE:");
+	printf("MY-write:\n");
+	ret = ft_write(1, s1, ft_strlen(s1));
+	printf("\nret: %d\n", ret);
+	perror("ERR: FT_WRITE:");
+
+	/*
+	**--------------------------------------------------------------------------
+	**	ERROR (null)
+	**--------------------------------------------------------------------------
+	*/
+
+	printf("OG-write:\n");
+	ret = write(1, null, ft_strlen(null));
+	printf("\nret: %d\n", ret);
+	perror("ERR: WRITE:");
+	printf("MY-write:\n");
+	ret = ft_write(1, null, ft_strlen(null));
+	printf("\nret: %d\n", ret);
+	perror("ERR: FT_WRITE:");
+
+	/*
+	**--------------------------------------------------------------------------
+	**	FD 0
+	**--------------------------------------------------------------------------
+	*/
+
+	printf("OG-write:\n");
+	ret = write(0,s1,ft_strlen(s1));
+	printf("\nret: %d\n", ret);
+	perror("ERR: WRITE:");
+	printf("MY-write:\n");
+	ret = ft_write(0, s1, ft_strlen(s1));
+	printf("\nret: %d\n", ret);
+	perror("ERR: FT_WRITE:");
+	
+	/*
+	**--------------------------------------------------------------------------
+	**	ERROR BAD FD
+	**--------------------------------------------------------------------------
+	*/
+
+	printf("OG-write:\n");
+	ret = write(3,s1,ft_strlen(s1));
+	printf("\nret: %d\n", ret);
+	perror("ERR: WRITE:");
+	printf("MY-write:\n");
+	ret = ft_write(3, s1, ft_strlen(s1));
+	printf("\nret: %d\n", ret);
+	perror("ERR: FT_WRITE:");
+	
 }

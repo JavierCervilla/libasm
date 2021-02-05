@@ -1,13 +1,15 @@
 ;------------------------------------------------------------------------
 ;   <ft_strcmp.s>
 ;------------------------------------------------------------------------
-;   int ft_strcmp(const char *s1, const char *s2);
+;   int ft_strcmp(const char *s1 = rdi, const char *s2 = rsi);
 ;       ·inputs:
 ;           ·char *s1 : cadena de caracteres 1
 ;           ·char *s2 : cadena de caracteres 2
 ;       ·return:
 ;           ·int rtn : diferencia entre primeros dos caracteres distintos
 ;             de s1 y s2.
+;------------------------------------------------------------------------
+;   author: <jcervill>  <jcervill@student.42madrid.com>
 ;------------------------------------------------------------------------
 
             section .text
