@@ -6,7 +6,7 @@
 /*   By: jcervill <jcervill@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/08/04 14:57:34 by jcervill          #+#    #+#             */
-/*   Updated: 2020/08/18 09:31:32 by jcervill         ###   ########.fr       */
+/*   Updated: 2021/02/16 09:35:55 by jcervill         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ int		main()
 	**			·ret(len(s));
 	**------------------------------------------------------------------------
 	*/
-
 	char 	*s = "prueba";
 	char	*empty = "";
 	char	*null = "\0";
 	
+	printf("-------------------\n");
 	printf("OG-len:%zu\n", strlen(s));
 	printf("MY-len:%zu\n", ft_strlen(s));
 	printf("OG-len:%zu\n", strlen(empty));
@@ -45,11 +45,11 @@ int		main()
     **     ·char *dst : una vez copiado src a dst retorna dst
 	**-------------------------------------------------------------------------
 	*/
-
 	char *src = "hola mundo";
 	char *dst;
 	if (!(dst = (char *)malloc(sizeof(char) * (ft_strlen(src) + 1))))
 		return(0);
+	printf("-------------------\n");
 	printf("OG-strcpy:%s\n", strcpy(dst, src));
 	printf("OG-strcpy(dst):%s\n", dst);
 	printf("MY-strcpy:%s\n", ft_strcpy(dst, src));
@@ -58,7 +58,7 @@ int		main()
 	/*
 	** ------------------------------------------------------------------------
 	*/
-
+	printf("-------------------\n");
 	printf("OG-strcpy:%s\n", strcpy(dst, null));
 	printf("OG-strcpy(dst):%s\n", dst);
 	printf("MY-strcpy:%s\n", ft_strcpy(dst, null));
@@ -75,7 +75,7 @@ int		main()
 	**         de s1 y s2.
 	**-------------------------------------------------------------------------
 	*/
-
+	printf("-------------------\n");
 	char *s1 = "hola cerda";
 	char *s2 = "hola cerdA";
 	char *s3 = "hola";
@@ -100,7 +100,7 @@ int		main()
 	**			esta la copia de s
 	**-------------------------------------------------------------------------
 	*/
-
+	printf("-------------------\n");
 	printf("OG-strdup:%s\n", strdup(s1));
 	printf("MY-strdup:%s\n", ft_strdup(s1));
 	printf("OG-strdup:%s\n", strdup(s2));
@@ -116,7 +116,7 @@ int		main()
 	**	
 	**-------------------------------------------------------------------------
 	*/
-
+	printf("-------------------\n");
 	int ret;
 	printf("OG-write:\n");
 	ret = write(1,s1,ft_strlen(s1));
@@ -132,7 +132,7 @@ int		main()
 	**	ERROR (null)
 	**--------------------------------------------------------------------------
 	*/
-
+	printf("-------------------\n");
 	printf("OG-write:\n");
 	ret = write(1, null, ft_strlen(null));
 	printf("\nret: %d\n", ret);
@@ -147,7 +147,7 @@ int		main()
 	**	FD 0
 	**--------------------------------------------------------------------------
 	*/
-
+	printf("-------------------\n");
 	printf("OG-write:\n");
 	ret = write(0,s1,ft_strlen(s1));
 	printf("\nret: %d\n", ret);
@@ -162,7 +162,7 @@ int		main()
 	**	ERROR BAD FD
 	**--------------------------------------------------------------------------
 	*/
-
+	printf("-------------------\n");
 	printf("OG-write:\n");
 	ret = write(3,s1,ft_strlen(s1));
 	printf("\nret: %d\n", ret);
@@ -171,5 +171,24 @@ int		main()
 	ret = ft_write(3, s1, ft_strlen(s1));
 	printf("\nret: %d\n", ret);
 	perror("ERR: FT_WRITE:");
-	
+	/*
+	**--------------------------------------------------------------------------
+	**	READ
+	**--------------------------------------------------------------------------
+	*/
+	char buff[81];
+	int fd;
+	buff[80] = 0;
+
+	fd = open("./test.txt", O_RDONLY);
+	printf("\nOG_READ:\n");
+	ret = read(fd,&buff,80);
+	printf("\nres: %s\n", buff);
+	printf("\nret: %d\n", ret);
+	close(fd);
+	fd = open("./test.txt", O_RDONLY);
+	printf("\nMY_READ:\n");
+	ret = ft_read(fd,&buff,80);
+	printf("\nres: %s\n", buff);
+	printf("\nret: %d\n", ret);
 }
